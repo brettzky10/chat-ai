@@ -1,10 +1,13 @@
 import {CheckIcon} from 'lucide-react'
+import Link from 'next/link'
+import CheckoutButton from './checkout-button'
+import { Button } from './ui/button'
 
 
 const tiers = [
     {
         name: "Starter",
-        id: "starter_ID",
+        id: null,
         href: "#",
         priceMonthly: null,
         description: "Get chatting right away with anyone, anywhere!",
@@ -46,33 +49,33 @@ const PricingCards = ({redirect}:{redirect: boolean }) => {
                     className='flex flex-col justify-between rounded-3xl bg-white p-8 shadow-xl ring-1 ring-gray-900/10 sm:p-10'
                 >
                     <div>
-                        <h3 key={tier.id + tier.name} className='text-base font-semibold ledaing-7 text-indigo-600'>
+                        <h3 key={tier.id + tier.name} className='text-base font-semibold leading-7 text-indigo-600'>
                             {tier.name}
                         </h3>
                         <div className='mt-4 flex items-baseline gap-x-2'>
                             {tier.priceMonthly ? (
                                 <>
-                                    <span className='text-5xl font-bold tracking-tight text-gray-900'>
+                                    <span className='text-5xl font-bold tracking-tight text-gray-900 dark:text-gray-900'>
                                         {tier.priceMonthly}
                                     </span>
-                                    <span className='text-base font-semibold leading-7 text-gray-600'>
+                                    <span className='text-base font-semibold leading-7 text-gray-600 dark:text-gray-600'>
                                         /month
                                     </span>
                                 </>
                             ): (
-                                <span className='text-5xl font-bold tracking-tight text-gray-900'>
+                                <span className='text-5xl font-bold tracking-tight text-gray-900 dark:text-gray-900'>
                                     Free
                                 </span>
                             )}
                         </div>
-                        <p className='mt-6 text-base leading-7 text-gray-600'>
+                        <p className='mt-6 text-base leading-7 text-gray-600 dark:text-gray-600'>
                             {tier.description}
                         </p>
                         <ul>
                             {tier.features.map((feature) => (
-                                <li key={feature} className='flex gap-x-3'>
+                                <li key={feature} className='flex gap-x-3 text-gray-600 dark:text-gray-600'>
                                     <CheckIcon
-                                        className='h-6 w-5 flex-none text-indigo-600'
+                                        className='h-6 w-5 flex-none text-indigo-600 dark:text-indigo-600'
                                         aria-hidden="true"
                                     />
                                     {feature}
@@ -80,6 +83,16 @@ const PricingCards = ({redirect}:{redirect: boolean }) => {
                             ))}
                         </ul>
                     </div>
+                    {redirect ? (
+                        <Button className='bg-indigo-600 mt-5' variant={"premium"}>
+                            <Link href="/register" className='text-white'>
+                                Get Started
+                            </Link>
+                        </Button>
+                        
+                    ):(
+                        tier.id && <CheckoutButton/>
+                    )}
                 </div>
             ))}
         </div>
