@@ -1,5 +1,7 @@
 "use client";
 
+import { auth } from "@/firebase";
+import { signInWithCustomToken } from "firebase/auth";
 import {Session} from "next-auth";
 import { useSession} from "next-auth/react"
 import {useEffect} from "react"
@@ -7,16 +9,19 @@ import {useEffect} from "react"
 async function syncFirebaseAuth(session: Session){
     if (session && session.firebaseToken){
         try{
-
+            //client sdk auth and token:
+            await signInWithCustomToken(auth, session.firebaseToken)
         } catch (error){
-
+            console.log("error signing in with custom token", error)
         }
+    } else {
+        auth.signOut()
     }
 }
 
 
 const FirebaseAuthProvider = (
-    {children}:{children: React.ReactNode;}
+    {children}:{children: React.ReactNode}
 ) => {
     const {data: session} = useSession();
     
