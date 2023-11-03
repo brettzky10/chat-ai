@@ -7,11 +7,17 @@ import { Button } from "./ui/button";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import LoadingSpinner from "./loading-spinnner";
+import { useSubscriptionStore } from "@/store/store";
+import ManageAccountButton from "./manage-account-button";
 
 
 const CheckoutButton = () => {
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
+  const subscription = useSubscriptionStore((state) => state.subscription);
+
+  const isLoadingSubscription = subscription === undefined;
+  const isSubscribed = subscription?.status === "active" && subscription?.role === "pro";
 
   const createCheckoutSession = async () => {
     if(!session?.user.id) return;
@@ -50,7 +56,13 @@ const CheckoutButton = () => {
 
   return (
     <Button variant={"checkout"} className="mt-5" onClick={() => createCheckoutSession()}>
-      {loading ? <LoadingSpinner/> : "Upgrade"}
+      {isSubscribed ? (
+        <ManageAccountButton/>
+      ) : isLoadingSubscription || loading ? <LoadingSpinner/> : 
+        <button onClick={()=> createCheckoutSession()}>
+          Upgrade
+        </button>
+      }
     </Button>
   )
 }
