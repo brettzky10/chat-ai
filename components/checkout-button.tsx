@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 
 import { useSession } from "next-auth/react";
 import { useState } from "react";
+import LoadingSpinner from "./loading-spinnner";
 
 
 const CheckoutButton = () => {
@@ -49,7 +50,7 @@ const CheckoutButton = () => {
 
   return (
     <Button variant={"checkout"} className="mt-5" onClick={() => createCheckoutSession()}>
-      {loading ? "Loading..." : "Upgrade"}
+      {loading ? <LoadingSpinner/> : "Upgrade"}
     </Button>
   )
 }

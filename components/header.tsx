@@ -8,6 +8,7 @@ import { authOptions } from "@/auth"
 import {MessagesSquareIcon} from "lucide-react"
 import Link from "next/link"
 import CreateChatButton from "./create-chat-button"
+import UpgradeBanner from "./upgrade-banner"
 
 
 export async function Header() {
@@ -20,6 +21,10 @@ export async function Header() {
             <Logo/>
             
             <div className='flex-1 flex items-center justify-end space-x-4'>
+
+              {/** Language Button */}
+
+
               {session ? (
                 <>
                   <Link
@@ -39,10 +44,11 @@ export async function Header() {
 
               }
                 <DarkModeToggle/>
-                {/** Language BUtton */}
                 <UserButton session={session}/>
             </div>
+
         </nav>
+        <UpgradeBanner/>
     </header>
   )
 }

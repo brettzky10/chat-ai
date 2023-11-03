@@ -11,7 +11,7 @@ export const LandingHero = () => {
   return (
     <div className="text-white font-bold py-36 text-center space-y-5">
       <div className="text-4xl tracking-tight sm:text-5xl md:text-6xl lg:text-7xl space-y-5 font-extrabold text-black dark:text-white">
-        <div className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 flex flex-row">
+        <div className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 flex flex-row justify-center align-top">
           <TypewriterComponent
             options={{
               strings: [
@@ -32,9 +32,9 @@ export const LandingHero = () => {
                   Let AI handle the translation.
                 </span>
               </p>
-      <div>
+      <div className="">
         <Link href={"/chat"}>
-          <Button variant="premium" className="md:text-lg p-4 md:p-6 rounded-full font-semibold transition transform active:scale-95 duration-200">
+          <Button variant="premium" className="md:text-lg p-4 md:p-6 mt-7 rounded-full font-semibold transition transform active:scale-95 duration-200">
             Get Started
           </Button>
         </Link>
@@ -42,8 +42,11 @@ export const LandingHero = () => {
       <Link
       href={"/pricing"}
       >
-          <div className="text-zinc-600 dark:text-zinc-400 text-xs md:text-sm font-normal pt-3">
+          <div className="text-zinc-600 dark:text-zinc-400 text-xs md:text-sm font-normal pt-10">
           No credit card required.
+          <p className='text-base font-semibold leading-7 text-indigo-400'>
+            See Pricing
+          </p>
         </div>
       </Link>
       
