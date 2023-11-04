@@ -6,6 +6,7 @@ import { Header } from '@/components/header'
 import ClientProviders from '@/components/client-provider'
 import FirebaseAuthProvider from '@/components/firebase-auth-provider'
 import SubscriptionProvider from '@/components/subscription-provider'
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -33,6 +34,7 @@ export default function RootLayout({
               >
                 <Header/>
                 {children}
+                <Toaster/>
               </ThemeProvider>
             </SubscriptionProvider>
           </FirebaseAuthProvider>
