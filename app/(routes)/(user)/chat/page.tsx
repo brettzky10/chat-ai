@@ -11,8 +11,6 @@ type Props = {
 function ChatsPage({ searchParams: {error}}: Props) {
   return (
     <div>
-
-
         <ChatList/>
     </div>
   )
