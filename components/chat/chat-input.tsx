@@ -44,7 +44,12 @@ function ChatInput({chatId}:{chatId: string}) {
     })
 
     async function onSubmit(values: z.infer<typeof formSchema>){
-        if (values.input.length === 0){
+
+        const inputCopy = values.input.trim();
+
+        form.reset();
+
+        if (inputCopy.length === 0){
             return;
         }
         if (!session?.user){
@@ -82,12 +87,12 @@ function ChatInput({chatId}:{chatId: string}) {
         }
 
         addDoc(messagesRef(chatId), {
-            input: values.input,
+            input: inputCopy,
             timestamp: serverTimestamp(),
             user: userToStore,
         });
 
-        form.reset();
+        
     }
 
   return (
@@ -104,7 +109,7 @@ function ChatInput({chatId}:{chatId: string}) {
                             <Input 
                                 placeholder="Enter message in ANY language..." 
                                 {...field}
-                                className="border-none bg-transparent dark:placeholder:text-white/70"
+                                className="border-none bg-transparent dark:placeholder:text-white/70 "
                             />
                         </FormControl>
                         <FormMessage />
