@@ -20,6 +20,8 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "../ui/form"
 import { Input } from "../ui/input";
 import { Dialog, DialogHeader, DialogTitle, DialogTrigger, DialogContent, DialogDescription } from "../ui/dialog";
 import { Button } from "../ui/button";
+import ShareLink from "./share-link";
+
 
 const formSchema = z.object({
     email: z.string().email("Please enter a valid email address"),
@@ -78,6 +80,51 @@ function InviteUser({ chatId }: {chatId: string}) {
             return;
         }
 
+        const querySnapshot = await getDocs(getUserByEmailRef(values.email));
+
+        if (querySnapshot.empty){
+            toast({
+                title: "User not found",
+                description:
+                "Please enter an email address of a registered user OR resend the invitation once they have signed up!",
+                variant: "destructive"
+            });
+            return;
+        } else{
+            //fetch user
+            const user = querySnapshot.docs[0].data();
+
+            //add them to chat
+            await setDoc(addChatRef(chatId, user.id), {
+                userId: user.id!,
+                email: user.email!,
+                timestamp: serverTimestamp(),
+                chatId: chatId,
+                isAdmin: false,
+                image: user.image || "",
+            }).then(()=>{
+                setOpen(false);
+                toast({
+                    title: "Added to chat",
+                    description: "The user has been added to the chat successfully!",
+                    className: "bg-green-600 text-white",
+                    duration: 3000,
+                });
+                //Invite Link
+                setOpenInviteLink(true);
+            
+            })
+            .catch(()=>{
+                toast({
+                    title: "Error",
+                    description: "Whoops... there was an error adding the user to the chat!",
+                    variant: "destructive",
+                });
+                setOpen(false);
+            })
+        }
+
+        form.reset();
 
     }
 
@@ -127,12 +174,12 @@ function InviteUser({ chatId }: {chatId: string}) {
                 </DialogContent>
             </Dialog>
 
-            {/** 
+            
             <ShareLink
                 isOpen={openInviteLink}
                 setIsOpen={setOpenInviteLink}
                 chatId={chatId}
-            /> */}
+            />
         </>
     )
   );

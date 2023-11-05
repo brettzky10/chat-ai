@@ -55,6 +55,18 @@ const CheckoutButton = () => {
 
 
   return (
+
+    <div>
+    {isSubscribed && (
+      <>
+        <hr className="mt-5"/>
+        <p>
+          Your are subscribed to PRO
+        </p>
+      </>
+    )}
+    
+
     <Button variant={"checkout"} className="mt-5" onClick={() => createCheckoutSession()}>
       {isSubscribed ? (
         <ManageAccountButton/>
@@ -64,6 +76,7 @@ const CheckoutButton = () => {
         </button>
       }
     </Button>
+    </div>
   )
 }
 
