@@ -139,7 +139,7 @@ function InviteUser({ chatId }: {chatId: string}) {
                         Add User to Chat
                     </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-md">
+                <DialogContent className="sm:max-w-md bg-slate-100 dark:bg-slate-900">
                     <DialogHeader>
                         <DialogTitle>Add User to Chat</DialogTitle>
                         <DialogDescription>
@@ -160,7 +160,7 @@ function InviteUser({ chatId }: {chatId: string}) {
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormControl>
-                                            <Input placeholder="john@doe.com" {...form}/>
+                                            <Input placeholder="john@doe.com" {...field}/>
                                         </FormControl>
                                         <FormMessage/>
                                     </FormItem>
