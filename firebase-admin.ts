@@ -3,8 +3,7 @@ import admin from "firebase-admin";
 
 let app;
 
-const destPath = process.env.FIREBASE_PRIVATE_KEY ? process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/gm, "\n")
-         : undefined
+const destPath = process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/gm, "\n") ? process.env.FIREBASE_PRIVATE_KEY : "undefined"
 
 if (!admin.apps.length){
     app = admin.initializeApp({
