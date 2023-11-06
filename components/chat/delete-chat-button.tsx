@@ -67,7 +67,7 @@ const adminId = useAdminId({ chatId });
                     Delete Chat
                 </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-md bg-slate-900">
+            <DialogContent className="sm:max-w-md bg-slate-100 dark:bg-slate-900">
                 <DialogHeader>
                     <DialogTitle>Are you sure?</DialogTitle>
                     <DialogDescription>
