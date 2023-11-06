@@ -53,7 +53,7 @@ function ShareLink({
                     Share Link
                 </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-md bg-slate-900">
+            <DialogContent className="sm:max-w-md bg-slate-100 dark:bg-slate-900">
                 <DialogHeader>
                     <DialogTitle>Share Link</DialogTitle>
                     <DialogDescription>
@@ -71,7 +71,7 @@ function ShareLink({
                         </Label>
                         <Input id="link" defaultValue={linkToChat} readOnly />
                     </div>
-                    <Button>
+                    <Button type="submit" onClick={()=>copyToClipboard()} size="sm" className="px-3">
                         <span className="sr-only">Copy</span>
                         <Copy className="h-4 w-4"/>
                     </Button>
