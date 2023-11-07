@@ -1,5 +1,11 @@
 
+import { LandingContent } from "@/components/landing/landing-content";
+import LandingFaq from "@/components/landing/landing-faq";
+import LandingFeatures from "@/components/landing/landing-features";
+import LandingFooter from "@/components/landing/landing-footer";
 import { LandingHero } from "@/components/landing/landing-hero";
+import LandingPitch from "@/components/landing/landing-pitch";
+import LandingZigzag from "@/components/landing/landing-zigzag";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -43,6 +49,13 @@ export default function Home() {
         }}
         />
       </div>
+      <div className="h-full ">
+      <LandingFeatures/>
+      <LandingZigzag/>
+      <LandingContent />
+      <LandingFaq/>
+      <LandingFooter/>
+    </div>
     </div>
   )
 }

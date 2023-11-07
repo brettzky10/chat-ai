@@ -18,7 +18,7 @@ async function ChatList(){
 
     return (
         <div>
-            ChatList
+            <h1 className="px-5 text-md font-black text-gray-300">My Chats:</h1>
             <ChatListRows initialChats={initialChats}/>
         </div>
     )

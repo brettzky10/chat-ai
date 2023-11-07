@@ -13,6 +13,7 @@ import { getDocs, serverTimestamp, setDoc } from "firebase/firestore";
 import { addChatRef, chatMembersCollectionGroupRef } from "@/lib/converters/chat-members";
 import { ToastAction } from "./ui/toast";
 
+
 const CreateChatButton = ({isLarge}:{isLarge?: boolean }) => {
 
     const { data: session } = useSession();
@@ -96,16 +97,16 @@ const CreateChatButton = ({isLarge}:{isLarge?: boolean }) => {
   if (isLarge)
   return (
     <div>
-      <Button onClick={createNewChat}>
-        {loading ? <LoadingSpinner/> : "Create a New Chat"}
-      </Button>
+      
+            <Button onClick={createNewChat}>{loading ? <LoadingSpinner/> : "Create a New Chat"}</Button>
+            
     </div>
   )
 
   return (
-    <Button onClick={createNewChat} variant={"ghost"}>
-        <MessageSquarePlusIcon/>
-    </Button>
+
+            <Button onClick={createNewChat} variant={"ghost"}><MessageSquarePlusIcon/></Button>
+            
   )
 }
 

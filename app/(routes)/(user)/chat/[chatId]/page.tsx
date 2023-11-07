@@ -3,10 +3,14 @@ import AdminControls from "@/components/chat/admin-controls";
 import ChatInput from "@/components/chat/chat-input";
 import ChatMemberBadges from "@/components/chat/chat-member-badges";
 import ChatMessages from "@/components/chat/chat-messages";
+import GenerateButton from "@/components/chat/generate-button";
+import { Button } from "@/components/ui/button";
 import { chatMembersRef } from "@/lib/converters/chat-members";
 import { sortedMessagesRef } from "@/lib/converters/message";
 import { getDocs } from "firebase/firestore";
+import { Brush } from "lucide-react";
 import { getServerSession } from "next-auth"
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 type Props = {
@@ -17,6 +21,7 @@ type Props = {
 
 
 async function ChatPage({ params: {chatId}}: Props) {
+
 
   const session = await getServerSession(authOptions);
 
@@ -29,6 +34,7 @@ async function ChatPage({ params: {chatId}}: Props) {
 
   return (
     <>
+      <GenerateButton/>
       <AdminControls chatId={chatId}/>
       <ChatMemberBadges chatId={chatId}/>
 
