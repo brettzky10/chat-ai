@@ -11,7 +11,7 @@ type Props = {
 
 function ChatsPage({ searchParams: {error}}: Props) {
   return (
-    <div>
+    <div className="">
         {error && (
           <div className="m-2">
             <ChatPermissionError />

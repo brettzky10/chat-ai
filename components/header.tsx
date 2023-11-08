@@ -1,5 +1,3 @@
-
-
 import { getServerSession } from "next-auth"
 import DarkModeToggle from "./dark-mode-toggle"
 import { Logo } from "./logo"
@@ -25,87 +23,40 @@ export async function Header() {
             
             <div className='flex-1 flex items-center justify-end space-x-4'>
 
-              {/** Language Button */}
-              <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger >
+              {/** Cannot have tooltip because of hydration error of button within a button */}
+              
                         <LanguagesSelect/>
-                  </TooltipTrigger>
-                      <TooltipContent className="bg-white text-black">
-                        <p>Language Select</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
+                  
               
 
               {session ? (
                 <>
-                <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger >
-                        <Link
+                <Link
                           href={'/chat'} prefetch={false}
                         >
                           <MessagesSquareIcon
 
                           />
                         </Link>
-                  </TooltipTrigger>
-                      <TooltipContent className="bg-white text-black">
-                        <p>My Chats</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
                   
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger >
-                        <CreateChatButton/>
-                  </TooltipTrigger>
-                      <TooltipContent className="bg-white text-black">
-                        <p>Create Chat</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
+                  <CreateChatButton/>
                   
                 </>
               ) : (
-                <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger>
+                
                       <Link href="/pricing">
                         Pricing
                       </Link>
-                  </TooltipTrigger>
-                      <TooltipContent className="bg-white text-black">
-                        <p>Plans</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
+                  
                 
               )
 
               }
-                <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger>
+                
                         <DarkModeToggle/>
-                  </TooltipTrigger>
-                      <TooltipContent className="bg-white text-black">
-                        <p>Mode Switch</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger>
+                  
                       <UserButton session={session}/>
-                  </TooltipTrigger>
-                      <TooltipContent className="bg-white text-black">
-                        <p>User Options</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
+                  
                 
             </div>
 

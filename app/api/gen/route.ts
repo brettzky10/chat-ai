@@ -95,6 +95,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
     const json = await response.json()
     let choice = json.choices[0]
+
+    console.log(choice.message)
     
     const { function_call } = choice.message
     console.log('function_call: ', function_call)

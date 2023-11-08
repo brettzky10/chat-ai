@@ -4,7 +4,7 @@ import LoadingSpinner from '@/components/loading-spinnner'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import { toast, useToast } from '@/components/ui/use-toast'
+import { useToast } from '@/components/ui/use-toast'
 import { useSubscriptionStore } from '@/store/store'
 import { ArrowLeft } from 'lucide-react'
 import { useSession } from 'next-auth/react'
@@ -13,7 +13,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
-//TODO: chatId is returning undefined, not getting passed properly
+
 type Props = {
   params: {
     chatId: string;
@@ -42,7 +42,7 @@ function GeneratePage({ params: {chatId}}: Props) {
     
     async function callApi() {
 
-      if (!session?.user.id) return;
+      //if (!session?.user.id) return;
 
       setLoading(true);
         toast({
@@ -94,33 +94,31 @@ function GeneratePage({ params: {chatId}}: Props) {
       <main className="flex flex-col items-leading justify-between max-w-lg mx-auto px-5">
        
         <Link href={link} prefetch={false}> {/** bring in chatId */}
-          <div className='flex flex-row gap-x-3'>
+          <div className='flex flex-row gap-x-3 mt-3'>
          <ArrowLeft/>
          Back to Chat
          </div>
         </Link>
         
         
-        <p className='text-gray-300 font-black text-6xl my-10'>Imagine anything! 
+        <p className='text-gray-500 dark:text-gray-300 font-black text-6xl my-10'>Imagine anything! 
         </p>
-        <Card className='bg-gray-800 p-3 shadow-md my-5'>
-          <p className='text-sm'>
-          Start with something simple as <span className='text-green-400 mt-1 font-light text-sm '>create me an image of a owl,</span>
+        <Card className='bg-gray-300 dark:bg-gray-800 p-3 shadow-md my-5'>
+          <p className='text-sm text-gray-800 dark:text-gray-100 font-light mb-5'>
+          Start with something simple as <span className='italic text-gray-600 dark:text-gray-300 mt-1 font-light text-sm '>&apos;create me an image of a owl,&apos;</span>
           </p>
-          <p className='text-gray-200 mt-1 font-light text-sm'>
-          or a video of a cat chasing a dog,
-          </p>
-          <p className='mt-1 text-gray-100 font-light text-sm'>
+          
+          <p className='mt-1 text-gray-800 dark:text-gray-100 font-light text-sm'>
           or something tuned to your liking:
-          <p className='italic text-gray-300'>create me a song with Edo25 major g melodies that sound triumphant, leading up to a crescendo that resolves into a 9th harmonic.</p>
           </p> 
-          <p className='my-3 text-sm font-light '>
+          <p className='italic text-gray-600 dark:text-gray-300 text-sm'>&apos;create me a song with Edo25 major g melodies that sound triumphant, leading up to a crescendo that resolves into a 9th harmonic.&apos;</p>
+          
+          <p className='my-3 text-sm font-light text-gray-800 dark:text-gray-100'>
           To see more prompts like these, <span className='text-indigo-600 underline-offset-1'><Link href="/chat" prefetch={false}>Click here</Link></span> </p>
         </Card>
-        
-        
+
         <Input
-          className="text-white px-3 py-1 rounded"
+          className="text-gray-500 px-3 py-1 rounded"
           onChange={e => setInput(e.target.value)}
           placeholder='Type your prompt here...'
         />
@@ -129,9 +127,9 @@ function GeneratePage({ params: {chatId}}: Props) {
           onClick={callApi}
           className="rounded-full bg-green-500 text-white py-3 px-14 mt-3 mb-4 cursor-pointer"
         >
-          {loading ? <LoadingSpinner/> : <button onClick={callApi}>
-          Generate
-        </button>}
+          {loading ? <LoadingSpinner/> :
+          "Generate"
+        }
         </Button>
         {
           image && <Image src={image} width={500} alt={" "} height={500}/>

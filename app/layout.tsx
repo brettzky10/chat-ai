@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <ClientProviders>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning={true}>
         <body className={inter.className}>
           <FirebaseAuthProvider>
             <SubscriptionProvider>

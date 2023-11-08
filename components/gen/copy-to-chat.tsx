@@ -22,15 +22,18 @@ function CopyToChat({
 
 
     const {toast} = useToast();
+    
+    /*
     const host = window.location.host;
 
+    
     const linkToMedia = process.env.NODE_ENV === "development" 
-        ? ``
-        : `http://${host}/chat/${chatId}`;
+        ? `http://${host}/chat/${chatId}`
+        : `http://${host}/chat/${chatId}`; */
 
         async function copyToClipboard(){
             try{
-                await navigator.clipboard.writeText(linkToMedia);
+                //await navigator.clipboard.writeText(host);
                 console.log("Text copied to clipboard");
 
                 toast({
@@ -68,7 +71,7 @@ function CopyToChat({
                         <Label htmlFor="link" className="sr-only">
                             Link
                         </Label>
-                        <Input id="link" defaultValue={linkToMedia} readOnly />
+                        <Input id="link" defaultValue={"link goes here"} readOnly />
                     </div>
                     <Button type="submit" onClick={()=>copyToClipboard()} size="sm" className="px-3">
                         <span className="sr-only">Copy</span>

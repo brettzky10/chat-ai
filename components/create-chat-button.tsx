@@ -12,7 +12,7 @@ import { v4 as uuidv4 } from "uuid";
 import { getDocs, serverTimestamp, setDoc } from "firebase/firestore";
 import { addChatRef, chatMembersCollectionGroupRef } from "@/lib/converters/chat-members";
 import { ToastAction } from "./ui/toast";
-
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
 
 const CreateChatButton = ({isLarge}:{isLarge?: boolean }) => {
 
@@ -97,8 +97,17 @@ const CreateChatButton = ({isLarge}:{isLarge?: boolean }) => {
   if (isLarge)
   return (
     <div>
-      
-            <Button onClick={createNewChat}>{loading ? <LoadingSpinner/> : "Create a New Chat"}</Button>
+            <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger >
+                      <Button onClick={createNewChat}>{loading ? <LoadingSpinner/> : "Create a New Chat"}</Button>
+                  </TooltipTrigger>
+                      <TooltipContent className="bg-white text-black">
+                        <p>Create Chat</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+            
             
     </div>
   )

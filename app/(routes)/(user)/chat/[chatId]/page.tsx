@@ -33,20 +33,24 @@ async function ChatPage({ params: {chatId}}: Props) {
   if (!hasAccess) redirect("/chat?error=permission")
 
   return (
-    <>
-      <GenerateButton/>
-      <AdminControls chatId={chatId}/>
-      <ChatMemberBadges chatId={chatId}/>
+    <div className="flex flex-row">
+      <div className="invisible md:w-[50%] lg:w-[65%] md:visible">This is text</div>
+      <div className="w-[100%] md:w-[50%] lg:w-[35%]">
+          <GenerateButton/>
+          <AdminControls chatId={chatId}/>
+          <ChatMemberBadges chatId={chatId}/>
 
-      <div className="flex-1">
-        <ChatMessages
-          chatId={chatId}
-          session={session}
-          initialMessages={initialMessages}
-          />
+          <div className="flex-1">
+            <ChatMessages
+              chatId={chatId}
+              session={session}
+              initialMessages={initialMessages}
+              />
+          </div>
+          <ChatInput chatId={chatId} />
       </div>
-      <ChatInput chatId={chatId} />
-    </>
+      
+    </div>
   )
 }
 
