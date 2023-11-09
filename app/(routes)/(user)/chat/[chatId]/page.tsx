@@ -3,7 +3,13 @@ import AdminControls from "@/components/chat/admin-controls";
 import ChatInput from "@/components/chat/chat-input";
 import ChatMemberBadges from "@/components/chat/chat-member-badges";
 import ChatMessages from "@/components/chat/chat-messages";
+import DocButton from "@/components/chat/doc-button";
 import GenerateButton from "@/components/chat/generate-button";
+import SolveButton from "@/components/chat/solve-button";
+import { TextEditor } from "@/components/doc/TextEditor";
+import DocCollabPanel from "@/components/doc/doc-collab-panel";
+import { Room } from "@/components/doc/room";
+import { Header } from "@/components/header";
 import { Button } from "@/components/ui/button";
 import { chatMembersRef } from "@/lib/converters/chat-members";
 import { sortedMessagesRef } from "@/lib/converters/message";
@@ -33,10 +39,20 @@ async function ChatPage({ params: {chatId}}: Props) {
   if (!hasAccess) redirect("/chat?error=permission")
 
   return (
-    <div className="flex flex-row">
-      <div className="invisible md:w-[50%] lg:w-[65%] md:visible">This is text</div>
+    <div className="bg-slate-100 dark:bg-slate-900 flex flex-row">
+   
+    
+      
+      <div className="invisible md:w-[50%] lg:w-[65%] md:visible">
+        <div className="text-center justify-center font-black">
+          Drawing board
+          <DocButton/>
+        </div>
+      </div>
       <div className="w-[100%] md:w-[50%] lg:w-[35%]">
+          
           <GenerateButton/>
+          <SolveButton/>
           <AdminControls chatId={chatId}/>
           <ChatMemberBadges chatId={chatId}/>
 

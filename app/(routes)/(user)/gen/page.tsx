@@ -42,7 +42,14 @@ function GeneratePage({ params: {chatId}}: Props) {
     
     async function callApi() {
 
-      //if (!session?.user.id) return;
+      if (!session?.user.id){
+        toast({
+          title: "Permission Denied",
+          description: "You are not authorized for this action",
+          duration: 3000,
+        });
+        return;
+      } 
 
       setLoading(true);
         toast({
