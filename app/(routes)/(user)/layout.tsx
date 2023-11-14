@@ -12,7 +12,6 @@ export default function ChatsLayout({
         <div className="">
             <Header/>
             <div className="bg-gray-100 dark:bg-slate-950 h-screen">
-                
                 {children}
                 </div>
     </div>

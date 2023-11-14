@@ -135,7 +135,7 @@ body {
 html,
 body,
 #__next {
-  max-width: 65%;
+  max-width: 100%;
   min-height: 80vh;
   overflow: hidden;
 }

@@ -6,9 +6,6 @@ import { useSearchParams } from "next/navigation";
 import { ClientSideSuspense } from "@liveblocks/react";
 import { DocumentSpinner } from "@/primitives/Spinner";
 
-import "@/styles/text-editor.css";
-//import "../../globals.css";
-import "@/styles/doc.css";
 
 export function Room({ children }: { children: ReactNode }) {
   const roomId = useOverrideRoomId("nextjs-yjs-tiptap-advanced");

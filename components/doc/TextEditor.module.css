@@ -3,6 +3,7 @@
   flex-direction: column;
   background: var(--color-surface);
   position: absolute;
+  z-index: 0;
   top: 0;
   right: 0;
   bottom: 0;
@@ -10,7 +11,7 @@
 }
 
 .editorHeader {
-  margin-top: 5%;
+  margin-top: 90px;
   top: 0;
   left: 0;
   right: 0;
