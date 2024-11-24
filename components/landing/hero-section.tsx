@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import ShuffleCards from "../ui/glass-cards";
 import { Badge } from "../ui/badge";
 import PulsatingButton from "../ui/pulsating-button";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -25,85 +26,12 @@ export default function HeroSection() {
               <p className="items-center text-[#77BA99] dark:text-[#EFF0D1] text-lg mt-3 mb-16 mx-10">
                 Allow customers to speak freely in their own language and you in yours.
               </p>
+              <Link href={"/explore"}>
+              
               <PulsatingButton>Start for Free</PulsatingButton>
+              </Link>
             </div>
-            {/* End Title */}
-            {/* Avatar Group */}
-            {/* <div className="sm:flex sm:justify-center sm:items-center text-center sm:text-start">
-              <div className="flex-shrink-0 pb-5 sm:flex sm:pb-0 sm:pe-5">
-                
-                <div className="flex justify-center -space-x-3">
-                  <Avatar className="h-8 w-8 ">
-                    <AvatarImage
-                      src="https://github.com/shadcn.png"
-                      alt="@shadcn"
-                    />
-                    <AvatarFallback>CN</AvatarFallback>
-                  </Avatar>
-                  <Avatar className="h-8 w-8 ">
-                    <AvatarImage
-                      src="https://github.com/shadcn.png"
-                      alt="@shadcn"
-                    />
-                    <AvatarFallback>CN</AvatarFallback>
-                  </Avatar>
-                  <Avatar className="h-8 w-8 ">
-                    <AvatarImage
-                      src="https://github.com/shadcn.png"
-                      alt="@shadcn"
-                    />
-                    <AvatarFallback>CN</AvatarFallback>
-                  </Avatar>
-                  <Avatar className="h-8 w-8 ">
-                    <AvatarImage
-                      src="https://github.com/shadcn.png"
-                      alt="@shadcn"
-                    />
-                    <AvatarFallback>CN</AvatarFallback>
-                  </Avatar>
-                  <span className="z-10 inline-flex items-center justify-center h-8 w-8 rounded-full ring-2 ring-muted-foreground bg-background">
-                    <span className="text-xs font-medium leading-none uppercase">
-                      7k+
-                    </span>
-                  </span>
-                </div>
-                
-              </div>
-              <div className="border-t sm:border-t-0 sm:border-s  w-32 h-px sm:w-auto sm:h-full mx-auto sm:mx-0" />
-              <div className="pt-5 sm:pt-0 sm:ps-5">
-                <div className="text-lg font-semibold">Trust pilot</div>
-                <div className="text-sm text-muted-foreground">
-                  Rated best over 37k reviews
-                </div>
-              </div>
-            </div> */}
-            {/* End Avatar Group */}
-            {/* Form */}
-            {/* <form>
-              <div className="mx-auto max-w-2xl sm:flex sm:space-x-3 p-3 border rounded-lg shadow-lg shadow-primary-foreground ">
-                <div className="pb-2 sm:pb-0 sm:flex-[1_0_0%]">
-                  <Label htmlFor="name">
-                    <span className="sr-only">Your name</span>
-                  </Label>
-                  <Input type="text" id="name" placeholder="Your name" />
-                </div>
-                <div className="pt-2 sm:pt-0 sm:ps-3 border-t sm:border-t-0 sm:border-s sm:flex-[1_0_0%]">
-                  <Label
-                    htmlFor="email"
-                    className="block text-sm font-medium dark:text-white"
-                  >
-                    <span className="sr-only">Your email address</span>
-                  </Label>
-                  <Input type="email" id="email" placeholder="Your email" />
-                </div>
-                <div className="pt-2 sm:pt-0 grid sm:block sm:flex-[0_0_auto]">
-                  <Button>Get started</Button>
-                </div>
-              </div>
-            </form> */}
-            {/* End Form */}
-
-            {/* <ShuffleCards/> */}
+            
 
 
               
