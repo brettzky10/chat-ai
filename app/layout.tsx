@@ -7,7 +7,7 @@ import ClientProviders from '@/components/client-provider'
 import FirebaseAuthProvider from '@/components/firebase-auth-provider'
 import SubscriptionProvider from '@/components/subscription-provider'
 import Providers from '@/app/providers';
-import { getCldOgImageUrl } from 'next-cloudinary';
+
 //import { Toaster } from "@/components/ui/toaster"
 import { Toaster } from "@/components/ui/sonner"
 import { getConfig } from '@/lib/media/config';
@@ -23,9 +23,7 @@ export const metadata: Metadata = {
       {
         width: 1200,
         height: 627,
-        url: getCldOgImageUrl({
-          src: 'https://res.cloudinary.com/photoboxdev/image/upload/v1711559782/assets/photobox-social-og_mppn8w.png'
-        })
+        url: "/images/translate.png"
       }
     ]
   }
