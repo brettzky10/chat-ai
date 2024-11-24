@@ -44,7 +44,7 @@ const PricingCards = ({redirect}:{redirect: boolean }) => {
     <div className=''>
         <div className='mx-auto grid max-w-md grid-cols-1 gap-8 lg:max-w-4xl lg:grid-cols-2'>
             {tiers.map((tier) => (
-            <div className='rounded-3xl bg-zinc-800 p-1 shadow-xl'>
+            <div key={tier.id} className='rounded-3xl bg-zinc-800 p-1 shadow-xl'>
                 <div
                     key={tier.id}
                     className='flex flex-col justify-between rounded-3xl bg-gradient-to-tr from-black/40 via-white/10 to-black/25 p-8 shadow-xl ring-1 ring-gray-300/10 sm:p-10'
