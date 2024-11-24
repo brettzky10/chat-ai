@@ -364,17 +364,36 @@ export default function ChatRealtime() {
   }, []);
 
   return (
-    <div className="bg-gray-900 min-h-screen text-white flex items-center justify-center">
+    <div className="bg-transparent min-h-screen text-black flex items-center justify-center">
       <Head>
-        <title>AI Chat Circles</title>
+        <title className='text-white'>Chat with an AI Consultant</title>
         <meta name="description" content="Chat with AI using interactive circles" />
       </Head>
+      <div className="absolute inset-x-0 top-28 -z-10 transform-gpu overflow-hidden blur-3xl" aria-hidden="true">
+
+        <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#EFF0D1] to-[#77BA99] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+        style={{
+          clipPath:
+            "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
+        }}
+        />
+        <div className="absolute inset-x-0 top-28 -z-10 transform-gpu overflow-hidden blur-3xl" aria-hidden="true">
+
+        <div className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#EFF0D1] to-[#77BA99] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+        style={{
+          clipPath:
+            "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
+        }}
+        />
+        </div>
+        
+      </div>
       <main className="container mx-auto p-4 flex flex-col items-center">
-        <h1 className="text-3xl font-bold mb-8">AI Chat Circles</h1>
+        <h1 className="text-3xl font-bold mb-8 text-white">Chat with an AI Consultant</h1>
         <div className="flex justify-between w-full max-w-2xl mb-8">
           <div 
             className={`w-48 h-48 rounded-full flex items-center justify-center cursor-pointer transition-all duration-100 ${
-              isRecording ? 'bg-red-600' : isWaitingToSend ? 'bg-yellow-600' : 'bg-blue-600 hover:bg-blue-700'
+              isRecording ? 'bg-red-600' : isWaitingToSend ? 'bg-[#77BA99]' : 'bg-[#EFF0D1] hover:bg-[#cccdb2]'
             }`}
             onClick={handleUserCircleClick}
             style={{
@@ -388,7 +407,7 @@ export default function ChatRealtime() {
           </div>
           <div 
             className={`w-48 h-48 rounded-full flex items-center justify-center transition-all duration-100 ${
-              isAISpeaking ? 'bg-green-600' : 'bg-gray-600'
+              isAISpeaking ? 'bg-[#77BA99]' : 'bg-gray-600'
             }`}
             style={{
               transform: `scale(${1 + aiVolume / 200})`,
@@ -403,7 +422,7 @@ export default function ChatRealtime() {
         <div className="w-full max-w-2xl bg-gray-800 rounded-lg p-4 mb-4 h-64 overflow-y-auto">
           {messages.map((message, index) => (
             <div key={index} className={`mb-2 ${message.role === 'user' ? 'text-right' : 'text-left'}`}>
-              <span className={`inline-block p-2 rounded-lg ${message.role === 'user' ? 'bg-blue-600' : 'bg-green-600'}`}>
+              <span className={`inline-block p-2 rounded-lg ${message.role === 'user' ? 'bg-[#EFF0D1]' : 'bg-[#77BA99]'}`}>
                 {message.content}
               </span>
             </div>
@@ -421,7 +440,7 @@ export default function ChatRealtime() {
           />
           <button
             type="submit"
-            className="bg-blue-600 text-white p-2 rounded-r-lg hover:bg-blue-700 focus:outline-none"
+            className="bg-[#EFF0D1] text-black p-2 rounded-r-lg hover:bg-blue-700 focus:outline-none"
             disabled={isLoading || isRecording}
           >
             Send
