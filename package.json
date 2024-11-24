@@ -33,7 +33,6 @@
     "class-variance-authority": "^0.7.0",
     "cloudinary": "^2.2.0",
     "clsx": "^2.0.0",
-    "elevenlabs": "^0.18.0",
     "firebase": "^10.5.2",
     "firebase-admin": "^11.11.0",
     "framer-motion": "^11.1.9",
