@@ -6,12 +6,13 @@ import { useRouter } from "next/navigation";
 import { useSubscriptionStore } from "@/store/store";
 import { useSession } from "next-auth/react";
 import { useState } from "react"
-import { useToast } from "./ui/use-toast";
+//import { useToast } from "./ui/use-toast";
 import LoadingSpinner from "./loading-spinnner";
 import { v4 as uuidv4 } from "uuid";
 import { getDocs, serverTimestamp, setDoc } from "firebase/firestore";
 import { addChatRef, chatMembersCollectionGroupRef } from "@/lib/converters/chat-members";
-import { ToastAction } from "./ui/toast";
+//import { ToastAction } from "./ui/toast";
+import { toast } from "sonner";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
 
 const CreateChatButton = ({isLarge}:{isLarge?: boolean }) => {
@@ -19,7 +20,7 @@ const CreateChatButton = ({isLarge}:{isLarge?: boolean }) => {
     const { data: session } = useSession();
     const router = useRouter();
     const [loading, setLoading] = useState(false);
-    const {toast} = useToast();
+    //const {toast} = useToast();
     const subscription = useSubscriptionStore((state) => state.subscription);
 
     const createNewChat = async() => {
@@ -27,8 +28,8 @@ const CreateChatButton = ({isLarge}:{isLarge?: boolean }) => {
         if (!session?.user.id) return;
 
         setLoading(true);
-        toast({
-          title: "Creating new chat...",
+
+        toast("Creating new chat...",{
           description: "Hold tight while we create your new chat...",
           duration: 3000,
         });
@@ -41,19 +42,14 @@ const CreateChatButton = ({isLarge}:{isLarge?: boolean }) => {
         const isPro = subscription?.role === "pro" && subscription.status === "active";
         
           if (!isPro && noOfChats >=3 ){
-            toast({
-              title: "Free plan limit exceeded",
+            toast.error("Free plan limit exceeded", {
               description: "You have exceeded the limit of chats for the Free plan. Please upgrade to PRO to continue adding users to chats",
-              variant: "destructive",
-              action:(
-                <ToastAction
-                altText="Upgrade"
-                onClick={()=> router.push("/register")}
-                >
-                  Upgrade to PRO
-                </ToastAction>
-              )
-            });
+              action: {
+                label: "Upgrade",
+                onClick: () => router.push("/register"),
+              },
+            })
+            
 
             setLoading(false);
             
@@ -74,20 +70,17 @@ const CreateChatButton = ({isLarge}:{isLarge?: boolean }) => {
           image: session.user.image || "",
         }).then(()=> {
           //push user to new chat they created
-          toast({
-            title: "Success",
+          toast.success("Success!", {
             description: "Your chat has been created!",
             className: "bg-green-600 text-white",
             duration: 2000,
-          });
-          router.push(`/chat/${chatId}`);
+          })
+          router.push(`/chat/${chatId}`)
         }).catch(()=>{
-          toast({
-            title: "Error",
+          toast.error("Something went wrong", {
             description: "There was an error creating your chat",
-            variant:"destructive",
             duration: 2000,
-          });
+          })
         }).finally(()=>{
           setLoading(false);
         });

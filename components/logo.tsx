@@ -20,7 +20,7 @@ export const Logo = () => {
           />
         </div>
         
-        Buddy Chat
+        Bearear
         
     </div>
     </Link>

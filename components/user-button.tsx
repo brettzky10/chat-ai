@@ -23,7 +23,7 @@ export const UserButton = ({ session }:{ session: Session | null}) => {
   const subscription = useSubscriptionStore((state) => state.subscription);
 
   if (!session) return (
-    <Button variant={'outline'} onClick={() => signIn()}>
+    <Button variant={'ghost'} onClick={() => signIn()}>
       Sign In
     </Button>
   );

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import FeatImage01 from '@/public/features-03-image-01.png'
+import FeatImage01 from '@/public/images/manager.png'//'@/public/features-03-image-01.png'
 import FeatImage02 from '@/public/features-03-image-02.png'
 import FeatImage03 from '@/public/features-03-image-03.png'
 
@@ -11,12 +11,18 @@ export default function LandingZigzag() {
         <div className="py-12 md:py-20 border-t border-gray-800">
 
           {/* Section header */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-            <div className="inline-flex text-sm font-semibold py-1 px-3 m-2 text-green-600 bg-green-200 rounded-full mb-4">Your chat view</div>
-            <h1 className="h2 mb-4">One product, unlimited solutions</h1>
-            <p className="text-xl text-gray-400">Collaborate and curate work as using ai to speed up efficency and break down language barriers. </p>
-          </div>
-
+          <div className="text-center items-center flex flex-col">
+              {/* <Badge className="text-xs font-semibold text-muted-foreground tracking-wide uppercase mb-3 text-[#77BA99] dark:text-[#EFF0D1]" variant={"secondary"}>
+                Small business solutions
+              </Badge> */}
+              <h1 className="scroll-m-20 text-5xl font-extrabold tracking-tight lg:text-7xl">
+                Connect Apps
+              </h1>
+              {/* Start - Explain What we do */}
+              <p className="items-center text-[#77BA99] dark:text-[#EFF0D1] text-lg mt-3 mb-5 mx-10">
+                Visualize your data in one location using over 1500+ apps.
+              </p>
+            </div>
           {/* Items */}
           <div className="grid gap-20">
 
@@ -25,13 +31,14 @@ export default function LandingZigzag() {
               {/* Image */}
               <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-5 lg:col-span-6 mb-8 md:mb-0 md:order-1" data-aos="fade-up">
                 <Image className="max-w-full mx-auto md:max-w-none h-auto" src={FeatImage01} width={540} height={405} alt="Features 01" />
+                <video src='/images/animation.webm' width={300} height={250}/>
               </div>
               {/* Content */}
               <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6" data-aos="fade-right">
                 <div className="md:pr-4 lg:pr-12 xl:pr-16">
-                  <div className="text-xl text-purple-600 mb-2">Generate as you chat</div>
-                  <h3 className="h3 mb-3">Keep projects on schedule</h3>
-                  <p className="text-xl text-gray-400 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  More Productivity
+                  <h3 className="h3 mb-3">Let us grow your output</h3>
+                  <p className="text-xl text-gray-400 mb-4">dawd.</p>
                   <ul className="text-lg text-gray-400 -mb-2">
                     <li className="flex items-center mb-2">
                       <svg className="w-3 h-3 fill-current text-green-500 mr-2 shrink-0" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
@@ -65,7 +72,7 @@ export default function LandingZigzag() {
               {/* Content */}
               <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6" data-aos="fade-left">
                 <div className="md:pl-4 lg:pl-12 xl:pl-16">
-                  <div className="font-architects-daughter text-xl text-purple-600 mb-2">More speed. Less spend</div>
+                  <div className="font-architects-daughter text-xl text-[#77BA99] dark:text-[#EFF0D1] mb-2">More speed. Less spend</div>
                   <h3 className="h3 mb-3">Keep projects on schedule</h3>
                   <p className="text-xl text-gray-400 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                   <ul className="text-lg text-gray-400 -mb-2">
@@ -101,7 +108,7 @@ export default function LandingZigzag() {
               {/* Content */}
               <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6" data-aos="fade-right">
                 <div className="md:pr-4 lg:pr-12 xl:pr-16">
-                  <div className="font-architects-daughter text-xl text-purple-600 mb-2">More speed. Less spend</div>
+                  <div className="font-architects-daughter text-xl text-[#77BA99] dark:text-[#EFF0D1] mb-2">More speed. Less spend</div>
                   <h3 className="h3 mb-3">Keep projects on schedule</h3>
                   <p className="text-xl text-gray-400 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                   <ul className="text-lg text-gray-400 -mb-2">

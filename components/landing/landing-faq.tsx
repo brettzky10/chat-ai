@@ -5,12 +5,13 @@ import {
     AccordionTrigger,
   } from "@/components/ui/accordion"
 import { Badge } from "../ui/badge"
+import Link from "next/link"
 
 const LandingFaq = () => {
   return (
     <div className="m-5">
         <div className="text-center">
-            <Badge variant="secondary" color="white">
+            <Badge variant="secondary" className="text-[#EFF0D1]">
                 FAQ
             </Badge>
             <h2 className="text-3xl text-white font-extrabold max-w-3xl py-5 lg:text-5xl mx-auto">Have a question? We have answers!</h2>
@@ -20,34 +21,34 @@ const LandingFaq = () => {
         <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
             <AccordionTrigger>
-                How does the AI use my photos?
+                How does your pricing work?
             </AccordionTrigger>
             <AccordionContent>
-                The AI trains a model based on your features, then uses this model to curate every photo to look like you after.
+                The free plan allows limited usage per month. We charge a monthly $6.99 subscription to business owners that want unlimited access to our tools. See our <Link href={"/pricing"} className="underline">pricing page</Link>
             </AccordionContent>
         </AccordionItem>
         </Accordion>
         <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
             <AccordionTrigger>
-                Why is the model training not free?
+                What languages do you offer?
             </AccordionTrigger>
             <AccordionContent>
-                It takes a ridiculous amount of computing power to train the model and those costs add up.
+                The languages we offer is always being updated. To see a full list, visit our <Link href="/languages" className="underline">languages page</Link>.
             </AccordionContent>
         </AccordionItem>
         </Accordion>
         <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
             <AccordionTrigger>
-                How long does it typically take?
+                Why not use google translate?
             </AccordionTrigger>
             <AccordionContent>
-                The training takes 1-2 hours.
+                Our UI allows business owners a simpler way to interact with customers while still providing some of the best translation AI in the industry.
             </AccordionContent>
         </AccordionItem>
         </Accordion>
-        <Accordion type="single" collapsible>
+        {/* <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
             <AccordionTrigger>
                 Do you offer refund?
@@ -56,7 +57,7 @@ const LandingFaq = () => {
                 At this time we do not offer a refund.
             </AccordionContent>
         </AccordionItem>
-        </Accordion>
+        </Accordion> */}
     </div>
     </div>
   )

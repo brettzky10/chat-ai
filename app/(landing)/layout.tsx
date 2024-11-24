@@ -8,7 +8,7 @@ export default function LandingLayout({
     return (
         <div>
             <Header/>
-            <div className="h-screen w-full flex flex-col flex-1 ">
+            <div className=" w-full flex flex-col flex-1 ">
                     {children}
             </div>
         </div>

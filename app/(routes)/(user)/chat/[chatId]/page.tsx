@@ -3,14 +3,9 @@ import AdminControls from "@/components/chat/admin-controls";
 import ChatInput from "@/components/chat/chat-input";
 import ChatMemberBadges from "@/components/chat/chat-member-badges";
 import ChatMessages from "@/components/chat/chat-messages";
-import DocButton from "@/components/chat/doc-button";
 import GenerateButton from "@/components/chat/generate-button";
 import SolveButton from "@/components/chat/solve-button";
-import { TextEditor } from "@/components/doc/TextEditor";
-import DocCollabPanel from "@/components/doc/doc-collab-panel";
-import { Room } from "@/components/doc/room";
-import { Header } from "@/components/header";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { chatMembersRef } from "@/lib/converters/chat-members";
 import { sortedMessagesRef } from "@/lib/converters/message";
 import { getDocs } from "firebase/firestore";
@@ -39,20 +34,15 @@ async function ChatPage({ params: {chatId}}: Props) {
   if (!hasAccess) redirect("/chat?error=permission")
 
   return (
-    <div className="bg-slate-100 dark:bg-slate-900 flex flex-row">
-   
-    
-      
-      <div className="invisible md:w-[50%] lg:w-[65%] md:visible">
-        <div className="text-center justify-center font-black">
-          Drawing board
-          <DocButton/>
-        </div>
+    <div className="bg-slate-100 dark:bg-slate-900 h-full">
+      <div  className="h-full sticky top-0 overflow-y-auto w-0 mx-auto max-w-7xl">
+        
+      {/* <div className="flex rounded-xl bg-white/30">
+            <GenerateButton/>
+             <SolveButton/> 
+          </div>  */}
       </div>
-      <div className="w-[100%] md:w-[50%] lg:w-[35%]">
-          
-          <GenerateButton/>
-          <SolveButton/>
+      <div className="w-full md:max-w-7xl mx-auto md:w-2/3 md:items-center h-full sticky top-0 overflow-y-auto">
           <AdminControls chatId={chatId}/>
           <ChatMemberBadges chatId={chatId}/>
 
@@ -64,6 +54,7 @@ async function ChatPage({ params: {chatId}}: Props) {
               />
           </div>
           <ChatInput chatId={chatId} />
+
       </div>
       
     </div>

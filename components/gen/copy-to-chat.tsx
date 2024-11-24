@@ -5,10 +5,11 @@ import { Label } from "@/components/ui/label"
 import { Dispatch, SetStateAction } from "react"
 
 
-import { ToastAction } from "../ui/toast";
-import { useToast } from "../ui/use-toast";
+//import { ToastAction } from "../ui/toast";
+//import { useToast } from "../ui/use-toast";
 
 import { Copy } from "lucide-react";
+import { toast } from "sonner";
 
 function CopyToChat({
     isOpen,
@@ -21,7 +22,7 @@ function CopyToChat({
 }) {
 
 
-    const {toast} = useToast();
+    //const {toast} = useToast();
     
     /*
     const host = window.location.host;
@@ -36,14 +37,18 @@ function CopyToChat({
                 //await navigator.clipboard.writeText(host);
                 console.log("Text copied to clipboard");
 
-                toast({
-                    title: "Copied Successfully",
+                toast.success("Copied Successfully",{
+                    
                     description: "Share this to the person you want to chat with! (Note: They must be added to the Chat to access it!)",
                     className: "bg-green-600 text-white",
                 });
 
             } catch (err){
-                console.error("Failed to cpoy text: ", err);
+                console.error("Failed to copy text: ", err);
+                toast.error("Failed to copy text",{
+                    description: "Something went wrong trying to copy the text",
+                    className: "bg-green-600 text-white",
+                });
             }
         }
 

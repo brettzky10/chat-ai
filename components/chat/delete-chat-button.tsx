@@ -10,22 +10,22 @@ import useAdminId from "@/hooks/useAdminId";
 import { Dispatch, SetStateAction } from "react"
 
 
-import { ToastAction } from "../ui/toast";
-import { useToast } from "../ui/use-toast";
+//import { ToastAction } from "../ui/toast";
+//import { useToast } from "../ui/use-toast";
 
 import { Copy } from "lucide-react";
+import { toast } from "sonner";
 
 function DeleteChatButton({ chatId }:{ chatId: string}) {
 const { data: session } = useSession();
 const [open, setOpen] = useState(false);
-const {toast} = useToast();
+//const {toast} = useToast();
 const router = useRouter();
 const adminId = useAdminId({ chatId });
 
 
     const handleDelete = async ()=>{
-        toast({
-            title: "Deleting chat",
+        toast("Deleting chat", {
             description: "Please wait while we delete the chat...",
         });
         console.log("Deleting :: ", chatId);
@@ -37,8 +37,7 @@ const adminId = useAdminId({ chatId });
             },
             body: JSON.stringify({ chatId: chatId}),
         }).then((res) => {
-            toast({
-                title: "Success",
+            toast.success("Success!",{
                 description: "Your chat has been deleted!",
                 className: "bg-green-600 text-white",
                 duration: 3000,
@@ -49,10 +48,8 @@ const adminId = useAdminId({ chatId });
             
         }).catch((err)=>{
             console.error(err.message);
-            toast({
-                title: "Error",
+            toast.error("Something went wrong",{
                 description: "An error occured deleting your chat",
-                variant: "destructive",
             });
         }).finally(()=> setOpen(false));
     }

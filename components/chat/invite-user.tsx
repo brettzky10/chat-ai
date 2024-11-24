@@ -9,8 +9,8 @@ import { useState } from "react";
 import { PlusCircleIcon } from "lucide-react";
 import { useRouter} from "next/navigation";
 
-import { ToastAction } from "../ui/toast";
-import { useToast } from "../ui/use-toast";
+//import { ToastAction } from "../ui/toast";
+//import { useToast } from "../ui/use-toast";
 import { useSubscriptionStore } from "@/store/store";
 //import { ShareLink } from "../ShareLink";
 import useAdminId from "@/hooks/useAdminId";
@@ -21,6 +21,7 @@ import { Input } from "../ui/input";
 import { Dialog, DialogHeader, DialogTitle, DialogTrigger, DialogContent, DialogDescription } from "../ui/dialog";
 import { Button } from "../ui/button";
 import ShareLink from "./share-link";
+import { toast } from "sonner";
 
 
 const formSchema = z.object({
@@ -31,7 +32,7 @@ const formSchema = z.object({
 function InviteUser({ chatId }: {chatId: string}) {
 
     const { data: session } = useSession();
-    const { toast } = useToast();
+    //const { toast } = useToast();
     const adminId = useAdminId({ chatId });
     const subscription = useSubscriptionStore((state) => state.subscription);
     const router = useRouter();
@@ -49,8 +50,7 @@ function InviteUser({ chatId }: {chatId: string}) {
     async function onSubmit(values: z.infer<typeof formSchema>){
         if (!session?.user.id) return;
 
-        toast({
-            title: "Sending invite",
+        toast("Sending invite",{
             description: "Please wait while we send the invite"
         });
 
@@ -63,18 +63,14 @@ function InviteUser({ chatId }: {chatId: string}) {
         const isPro = subscription?.role === "pro" && subscription.status === "active";
 
         if (!isPro && noOfUsersInChat >= 2){
-            toast({
-                title: "Free plan limit exceeded",
+            
+            toast.error("Free plan limit exceeded",{
+                
                 description: "You have exceeded the limit of users in a single chat for the FREE plan. Please upgrade to PRO to continue adding users to chats!",
-                variant: "destructive",
-                action: (
-                    <ToastAction
-                        altText="Upgrade"
-                        onClick={()=> router.push("/register")}
-                    >
-                        Upgrade to PRO
-                    </ToastAction>
-                ),
+                action: {
+                    label: "Upgrade",
+                    onClick: () => router.push("/register"),
+                  },
             });
 
             return;
@@ -83,11 +79,10 @@ function InviteUser({ chatId }: {chatId: string}) {
         const querySnapshot = await getDocs(getUserByEmailRef(values.email));
 
         if (querySnapshot.empty){
-            toast({
-                title: "User not found",
+            toast.error("User not found",{
                 description:
                 "Please enter an email address of a registered user OR resend the invitation once they have signed up!",
-                variant: "destructive"
+
             });
             return;
         } else{
@@ -104,8 +99,7 @@ function InviteUser({ chatId }: {chatId: string}) {
                 image: user.image || "",
             }).then(()=>{
                 setOpen(false);
-                toast({
-                    title: "Added to chat",
+                toast.success("Added to chat",{
                     description: "The user has been added to the chat successfully!",
                     className: "bg-green-600 text-white",
                     duration: 3000,
@@ -115,10 +109,8 @@ function InviteUser({ chatId }: {chatId: string}) {
             
             })
             .catch(()=>{
-                toast({
-                    title: "Error",
+                toast.error("Something went wrong",{
                     description: "Whoops... there was an error adding the user to the chat!",
-                    variant: "destructive",
                 });
                 setOpen(false);
             })

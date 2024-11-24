@@ -18,8 +18,10 @@ import { addDoc, getDocs, serverTimestamp } from "firebase/firestore";
 import { limitedMessagesRef, messagesRef, User } from "@/lib/converters/message";
 import { useRouter } from "next/navigation";
 import { useSubscriptionStore } from "@/store/store";
-import { useToast } from "../ui/use-toast";
-import { ToastAction } from "../ui/toast";
+//import { useToast } from "../ui/use-toast";
+//import { ToastAction } from "../ui/toast";
+import { toast } from "sonner"
+import TranslatePersonA from "../voice/translate-a";
 
 
 
@@ -34,7 +36,7 @@ function ChatInput({chatId}:{chatId: string}) {
     const { data: session } = useSession();
     const router = useRouter();
     const subscription = useSubscriptionStore((state) => state.subscription);
-    const { toast } = useToast();
+    //const { toast } = useToast();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -64,17 +66,13 @@ function ChatInput({chatId}:{chatId: string}) {
 
         //If you join a chat, you will have 20 messages, other people can still message if they have pro
         if (!isPro && messages >= 20){
-            toast({title: "free plan limit exceeded",
-            description:
-            "Youve exceeded the FREE plan limit of 20 messages per chat. Upgrade to PRO for unlimited chat messages",
-            variant: "destructive",
-            action: (
-                <ToastAction altText="Upgrade" onClick={() => router.push("/register")}>
-                    Upgrade to PRO
-                </ToastAction>
-            )
-        });
-
+            toast.error("Free plan limit exceeded", {
+                description: "You have exceeded the FREE plan limit of 20 messages per chat. Upgrade to PRO for unlimited chat messages",
+                action: {
+                  label: "Upgrade",
+                  onClick: () => router.push("/register"),
+                },
+              })
             return;
 
         }
@@ -96,10 +94,10 @@ function ChatInput({chatId}:{chatId: string}) {
     }
 
   return (
-    <div className="sticky bottom-0">
+    <div className="sticky bottom-5">
         <Form {...form}>
             <form 
-            onSubmit={form.handleSubmit(onSubmit)} className="flex space-x-2 p-2 rounded-t-xl max-w-4xl mx-auto bg-white border dark:bg-slate-800">
+            onSubmit={form.handleSubmit(onSubmit)} className="flex space-x-2 p-2 rounded-xl max-w-4xl mx-auto bg-white border dark:bg-slate-800">
                 <FormField
                 control={form.control}
                 name="input"

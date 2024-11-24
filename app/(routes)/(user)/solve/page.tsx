@@ -2,7 +2,8 @@
 
 import LoadingSpinner from '@/components/loading-spinnner';
 import { Button } from '@/components/ui/button'
-import { useToast } from '@/components/ui/use-toast';
+//import { useToast } from '@/components/ui/use-toast';
+import {toast } from "sonner"
 import { ChangeEvent, FormEvent, useState } from 'react'
 
 function SolvePage() {
@@ -10,7 +11,7 @@ function SolvePage() {
     const [ image, setImage ] = useState<string>("");
     const [ openAiResponse, setOpenAiResponse ] = useState<string>("");
     const [loading, setLoading] = useState(false);
-    const {toast} = useToast();
+    //const {toast} = useToast();
 
     function handleFileChange(event: ChangeEvent<HTMLInputElement>) {
         if(event.target.files === null){
@@ -38,8 +39,7 @@ function SolvePage() {
 
         //Loading State:
         setLoading(true);
-        toast({
-          title: "Solving...",
+        toast("Solving...",{
           description: "Hold tight while we solve your prompt...",
           duration: 3000,
         });

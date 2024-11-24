@@ -4,7 +4,8 @@ import LoadingSpinner from '@/components/loading-spinnner'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import { useToast } from '@/components/ui/use-toast'
+//import { useToast } from '@/components/ui/use-toast'
+import {toast} from "sonner"
 import { useSubscriptionStore } from '@/store/store'
 import { ArrowLeft } from 'lucide-react'
 import { useSession } from 'next-auth/react'
@@ -31,7 +32,7 @@ function GeneratePage({ params: {chatId}}: Props) {
   const { data: session } = useSession();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const {toast} = useToast();
+  //const {toast} = useToast();
   const subscription = useSubscriptionStore((state) => state.subscription);
     //Api navigation
     const [input, setInput] = useState('')
@@ -43,8 +44,8 @@ function GeneratePage({ params: {chatId}}: Props) {
     async function callApi() {
 
       if (!session?.user.id){
-        toast({
-          title: "Permission Denied",
+        toast.error("Permission Denied",{
+          
           description: "You are not authorized for this action",
           duration: 3000,
         });
@@ -52,8 +53,7 @@ function GeneratePage({ params: {chatId}}: Props) {
       } 
 
       setLoading(true);
-        toast({
-          title: "Generating...",
+        toast("Generating...", {
           description: "Hold tight while we create your prompt...",
           duration: 3000,
         });

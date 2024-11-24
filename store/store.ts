@@ -77,3 +77,20 @@ export const useSubscriptionStore = create<SubscriptionState>((set) => ({
     subscription: undefined,
     setSubscription: (subscription: Subscription | null) => set({ subscription }),
 }));
+
+
+
+type Store = {
+    text: string;
+    setText: (text: string) => void;
+  
+    voice: string;
+    setVoice: (voice: string) => void;
+  };
+  export const useTTSStore = create<Store>()((set) => ({
+    text: "",
+    setText: (text) => set({ text }),
+  
+    voice: "",
+    setVoice: (voice) => set({ voice }),
+  }));

@@ -7,21 +7,21 @@ const PricingPage = () => {
     <div className='isolate overflow-hidden bg-gray-900'>
       <div className='mx-auto max-w-7xl px-6 pb-96 pt-24 text-center sm:pt-32 lg:px-8'>
         <div className='mx-auto max-w-4xl'>
-          <h2 className='text-base font-semibold leading-7 text-indigo-400'>
+          <h2 className='text-base font-semibold leading-7 text-[#EFF0D1]'>
             Pricing
           </h2>
           <p className='mt-2 text-4xl font-bold tracking-light text-white sm:text-5xl'>
-            The right price, {" "}
-            <br className='hidden sm:inline lg:hidden'/>
-            whoever you are
+            Translate {" "}
+            <br/>
+            for any Business
           </p>
         </div>
         <div className='relative mt-6'>
           <p className='mx-auto max-w-2xl text-lg leading-8 text-white/60'>
-            We are 99% sure we have a plan to match 100% of your needs, if not, {" "}   <span className='underline'>
-                <Link href="/">
-                contact us
-                </Link>
+            , we are sure the <Link href="/contact">
+            reach out to us
+                </Link> {" "}   <span className='underline'>
+                
             </span>
           </p>
           <svg
@@ -37,14 +37,14 @@ const PricingPage = () => {
             />
             <defs>
               <radialGradient id="radial-gradient-pricing">
-                <stop stopColor='#7775D6'/>
-                <stop offset={1} stopColor='#E935C1'/>
+                <stop stopColor='#EFF0D1'/>
+                <stop offset={1} stopColor='#77BA99'/>
               </radialGradient>
             </defs>
           </svg>
         </div>
       </div>
-      <div className='flow-root bg-white pb-24 sm:pb-32'>
+      <div className='flow-root bg-gray-900 pb-24 sm:pb-32'>
           <div className='-mt-80'>
             <PricingCards redirect={true}/>
           </div>
