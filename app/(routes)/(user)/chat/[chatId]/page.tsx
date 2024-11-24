@@ -34,7 +34,7 @@ async function ChatPage({ params: {chatId}}: Props) {
   if (!hasAccess) redirect("/chat?error=permission")
 
   return (
-    <div className="bg-slate-100 dark:bg-slate-900 h-full">
+    <div className="bg-transparent h-full">
       <div  className="h-full sticky top-0 overflow-y-auto w-0 mx-auto max-w-7xl">
         
       {/* <div className="flex rounded-xl bg-white/30">
