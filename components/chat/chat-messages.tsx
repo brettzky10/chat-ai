@@ -49,8 +49,8 @@ function ChatMessages({ chatId, initialMessages, session}: {chatId: string; init
                 <div key={message.id} className="flex my-2 items-end">
                     <div className={`flex flex-col relative space-y-2 p-4 w-fit line-clamp-1 mx-2 rounded-lg ${
                         isSender
-                        ? "ml-auto bg-violet-600 text-white rounded-br-none"
-                        : "bg-gray-100 dark:text-gray-100 dark:bg-slate-700 rounded-bl-none"
+                        ? "ml-auto bg-[#77ba99] text-black rounded-br-none"
+                        : "bg-slate-700 text-white rounded-bl-none"
                     }`}>
                         <p className={`text-xs italic font-extralight line-clamp-1 ${
                             isSender
